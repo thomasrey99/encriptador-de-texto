@@ -23,7 +23,6 @@ body{
 .encryptor_cont{
     width: 70vw;
     height: 100vh;
-    background: red;
     display: flex;
     flex-direction: column;
     justify-content: center;
