@@ -7,24 +7,30 @@
     <title>Encriptador de texto</title>
 </head>
 <body>
-    <main class="container">
-        <section class="encryptor_cont">
-            <div class="text_cont">
-                <textarea name="" id="text_area" class="text_area"></textarea>
-            </div>
-            <div class="buttons_cont">
-                <button id="encrypt" onclick="encryptor()" disabled>Encriptar</button>
-                <button id="decrypt" onclick="decrypt()" disabled>Desencriptar</button>
-            </div>
-        </section>
-        <section class="message_cont">
-            <div class="message_result">
-                <p class="text_transform" id="text_transform"></p>
-            </div>
-            <div class="buttons_cont">
-                <button onclick="copyText()" id="copy">Copiar</button>
-            </div>
-        </section>
+    <main class="main">
+        <header class="header">
+            <h1>Encriptador de texto</h1>
+        </header>
+        <div class="container">
+            <section class="encryptor_cont">
+                <div class="text_cont">
+                    <textarea id="text_area" class="text_area" placeholder="INGRESE UN TEXTO"></textarea>
+                </div>
+                <div class="buttons_cont">
+                    <button class="button" id="encrypt" onclick="encryptor()" disabled>Encriptar</button>
+                    <button class="button" id="decrypt" onclick="decrypt()" disabled>Desencriptar</button>
+                </div>
+            </section>
+            <section class="message_cont">
+                <div class="message_result">
+                    <img src="./assets/Muñeco.png" class="img_empty" id="img_empty"/>
+                    <p class="text_transform" id="text_transform"></p>
+                </div>
+                <div class="buttons_cont">
+                    <button class="button" onclick="copyText()" id="copy">Copiar</button>
+                </div>
+            </section>
+        </div>
     </main>
     <script src="app.js" defer></script>
 </body>

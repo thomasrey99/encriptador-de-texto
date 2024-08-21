@@ -4,31 +4,48 @@ function addText(id, text){
     return;
 }
 
+function validation() {
+    let textArea = document.getElementById("text_area");
+    textArea.value = textArea.value
+                .toUpperCase()
+                .replace(/[^A-Z\s]/g, ''); 
+}
+
 function encryptor(){
     const rules = {
-        'e': 'enter',
-        'i': 'imes',
-        'a': 'ai',
-        'o': 'ober',
-        'u': 'ufat'
+        'E': 'ENTER',
+        'I': 'IMES',
+        'A': 'AI',
+        'O': 'OBER',
+        'U': 'UFAT'
     };
+    let textarea = document.getElementById("text_area");
     let element=document.getElementById("text_area").value;
-    let text_transform=element.replace(/[eioua]/g, letra => rules[letra]);
-    addText("text_transform", text_transform)
+    let imgElement=document.getElementById("img_empty")
+    if (imgElement) {
+        imgElement.remove();
+    }
+    let text_transform=element.replace(/[EIOUA]/g, letter => rules[letter]);
+    addText("text_transform", text_transform);
+    textarea.value="";
+    disableButtons()
     return;
 }
 
 function decrypt() {
-    const reglas = {
-        'enter': 'e',
-        'imes': 'i',
-        'ai': 'a',
-        'ober': 'o',
-        'ufat': 'u'
+    const rules = {
+        'ENTER': 'E',
+        'IMES': 'I',
+        'AI': 'A',
+        'OBER': 'O',
+        'UFAT': 'U'
     };
+    let textarea = document.getElementById("text_area");
     let element=document.getElementById("text_area").value;
-    let text_transform=element.replace(/enter|imes|ai|ober|ufat/g, palabra => reglas[palabra]);
-    addText("text_transform", text_transform)
+    let text_transform=element.replace(/ENTER|IMES|AI|OBER|UFAT/g, word => rules[word]);
+    addText("text_transform", text_transform);
+    textarea.value="";
+    disableButtons()
     return;
 }
 
@@ -44,6 +61,7 @@ function disableButtons() {
         encryptButton.disabled = true;
         decryptButton.disabled = true;
     }
+    return;
 }
 
 function copyText() {
@@ -51,12 +69,18 @@ function copyText() {
     const textCopy = document.getElementById("text_transform").textContent;
     const textArea=document.getElementById("text_area");
     textArea.value=textCopy;
+    disableButtons()
     return;
 }
 
 document.getElementById("text_area").addEventListener("input", disableButtons);
 
+document.getElementById("text_area").addEventListener("input", function() {
+    validation();
+    disableButtons();
+});
+
 disableButtons();
 
 
-addText("text_transform", "Agrega un texto")
+addText("text_transform", "No se encontro ningun mensaje")
